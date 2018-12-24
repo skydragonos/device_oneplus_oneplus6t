@@ -19,34 +19,36 @@
 # product configuration (apps).
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
+# Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-
-# Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# must be before including omni part
-TARGET_BOOTANIMATION_SIZE := 1080p
+#treble
+#$(call inherit-product, build/make/target/product/treble_common_64.mk)
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_WIDTH := 1080
+
 AB_OTA_UPDATER := true
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay/common
+DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6t/overlay/device
 DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/skydragon/products/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/oneplus/oneplus6t/device.mk)
+$(call inherit-product, device/oneplus/oneplus6/device.mk)
 
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_oneplus6t
+PRODUCT_NAME := skydragon_oneplus6t
 PRODUCT_DEVICE := oneplus6t
 PRODUCT_BRAND := OnePlus
 PRODUCT_MANUFACTURER := OnePlus
