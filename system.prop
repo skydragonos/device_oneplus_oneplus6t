@@ -29,6 +29,10 @@ dev.pm.dyn_samplingrate=1
 #ro.hdmi.enable=true
 #persist.speaker.prot.enable=false
 qcom.hw.aac.encoder=true
+#
+# system props for the cne module
+#
+persist.vendor.cne.feature=1
 
 #system props for the MM modules
 media.stagefright.enable-player=true
@@ -219,6 +223,16 @@ persist.vendor.radio.arfcn_test_mode=3
 #for ecc call
 persist.radio.enhance_ecall=true
 
+#ifdef VENDOR_EDIT by zhouhanxin keep O dpm config same with N
+# system props for the DPM module #
+# 0 Disable all DPM feature
+# 1 Enable Fast Dormancy (FD)
+# 2 Enable Connection Tracking (CT)
+# 4 Enable Network Socket Request Manager (NSRM)
+# 8 Enable TCP Connection Manager (TCM)
+persist.vendor.dpm.feature=9
+#endif
+
 #ifdef VENDOR_EDIT
 #lifei@OnLineRD.MultiMediaService, 2016/03/22, Modify for support Dirac Audio source
 persist.dirac.acs.controller=qem
@@ -302,7 +316,8 @@ ro.services.whitelist.packagelist=com.google.android.gms
 persist.sys.camera.preview.size=1920x1080
 
 persist.radio.aosp_usr_pref_sel=true
-persist.vendor.radio.add_power_save=false
+persist.vendor.radio.add_power_save=true
+persist.rcs.supported=true
 
 sdm.debug.disable_inline_rotator=1
 sdm.debug.disable_inline_rotator_secure=1
