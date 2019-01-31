@@ -1,4 +1,3 @@
-ro.adb.secure=0
 # GSI always generate dex pre-opt in system image
 ro.cp_system_other_odex=0
 
@@ -6,7 +5,108 @@ ro.control_privapp_permissions=disable
 
 # system.prop for sdm845
 #
+# Audio
+ro.vendor.audio.sdk.ssr=false
+ro.vendor.audio.sdk.fluencetype=fluence
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=true
+persist.vendor.audio.fluence.audiorec=false
+persist.vendor.audio.fluence.speaker=true
+persist.vendor.audio.fluence.hfpcall=false
+vendor.audio.tunnel.encode=false
+vendor.audio.offload.buffer.size.kb=64
+vendor.audio.offload.track.enable=false
+vendor.voice.path.for.pcm.voip=true
+vendor.audio.offload.multiaac.enable=true
+vendor.audio.offload.gapless.enabled=true
+vendor.audio.safx.pbe.enabled=true
+vendor.audio.parser.ip.buffer.size=0
+vendor.audio.dolby.ds2.enabled=false
+vendor.audio.dolby.ds2.hardbypass=false
+vendor.audio.offload.passthrough=false
+vendor.audio.offload.multiple.enabled=false
+vendor.audio_hal.period_size=192
 
+audio.deep_buffer.media=true
+audio.offload.video=true
+af.fast_track_multiplier=1
+#set AudioFlinger client heap size
+ro.af.client_heap_size_kbyte=7168
+
+# enable tunnel encoding for amrwb
+tunnel.audio.encode = true
+
+#Buffer size in kbytes for compress offload playback
+audio.offload.buffer.size.kb=32
+
+# AoD
+persist.debug.force_burn_in=true
+
+# Battery
+ro.cutoff_voltage_mv=3700
+
+# Bluetooth
+bt.max.hfpclient.connections=1
+qcom.bluetooth.soc=rome
+#ro.bluetooth.library_name=libbluetooth_qti.so
+vendor.bluetooth.soc=cherokee
+persist.vendor.btstack.enable.splita2dp=true
+#ifdef VENDOR_EDIT enable ldac
+persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
+#endif
+#system prop for wipower support
+ro.bluetooth.emb_wp_mode=true
+ro.bluetooth.wipower=true
+
+# Display power reduction (FOSS)
+ro.qcom.dpps.sensortype=3
+ro.qualcomm.display.paneltype=1
+ro.qualcomm.foss=1
+config.foss.xml=1
+config.foss.path=/vendor/etc/FOSSConfig.xml
+
+# CNE
+persist.cne.feature=1
+persist.dpm.feature=0
+
+# Data modules
+ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.data.mode=concurrent
+
+# Fingerprint
+persist.qfp=false
+
+# GPS
+ro.gps.agps_provider=1
+
+# Graphics
+vendor.gralloc.enable_fb_ubwc=1
+vendor.gralloc.disable_wb_ubwc=1
+ro.opengles.version=196610
+debug.sf.recomputecrop=0
+ro.sf.lcd_density=420
+sdm.perf_hint_window=50
+persist.hwc.enable_vds=1
+debug.sf.enable_hwc_vds=1
+debug.hwui.renderer=skiagl
+
+# IMS
+persist.volte_enabled_by_hw=1
+persist.data.iwlan.enable=true
+persist.radio.VT_HYBRID_ENABLE=1
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+persist.dbg.ims_volte_enable=1
+
+# NFC
+vendor.qti.nfc.chipid=pn80t
+
+# Perf
+ro.am.reschedule_service=true
+ro.vendor.extension_library=libqti-perfd-client.so
+ro.sys.fw.bg_apps_limit=60
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 #rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -21,18 +121,13 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 # Set network mode to (T/L/G/W/1X/EVDO, T/L/G/W/1X/EVDO) for 7+7 mode device on DSDS mode
-ro.telephony.default_network=22,22
+ro.telephony.default_network=9,9
 
-dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
 #ro.hdmi.enable=true
 #persist.speaker.prot.enable=false
 qcom.hw.aac.encoder=true
-#
-# system props for the cne module
-#
-persist.vendor.cne.feature=1
 
 #system props for the MM modules
 media.stagefright.enable-player=true
@@ -79,37 +174,6 @@ telephony.lteOnCdmaDevice=1,1
 #
 persist.fuse_sdcard=true
 
-#system prop for Bluetooth SOC type
-#ro.bluetooth.library_name=libbluetooth_qti.so
-vendor.bluetooth.soc=cherokee
-persist.vendor.btstack.enable.splita2dp=true
-#ifdef VENDOR_EDIT enable ldac
-persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
-#endif
-#system prop for wipower support
-ro.bluetooth.emb_wp_mode=true
-ro.bluetooth.wipower=true
-
-#
-#snapdragon value add features
-#
-ro.qc.sdk.audio.ssr=false
-
-##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
-
-#enable offload audio video playback by default
-audio.offload.video=true
-
-#enable music through deep buffer
-audio.deep_buffer.media=true
-
-#set AudioFlinger client heap size
-ro.af.client_heap_size_kbyte=7168
-
 #system prop for RmNet Data
 persist.data.df.dev_name=rmnet_usb0
 
@@ -121,25 +185,11 @@ persist.sys.wfd.virtual=0
 #property to enable HWC for VDS
 debug.sf.enable_hwc_vds=1
 
-# enable tunnel encoding for amrwb
-tunnel.audio.encode = true
-
-#Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kb=32
-
-#ifdef VENDOR_EDIT
-#wangbuqing@Multimedia,enable audio offload in video pleayback
-audio.offload.video=true
-#endif
-
 #Enable offload audio video playback by default
 av.offload.enable=true
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
-
-# system prop for NFC DT
-ro.nfc.port=I2C
 
 #enable dsp gapless mode by default
 #audio.offload.gapless.enabled=true
@@ -149,19 +199,6 @@ sys.qca1530=detect
 
 #Enable stm events
 persist.debug.coresight.config=stm-events
-
-#hwui properties
-ro.hwui.texture_cache_size=72
-ro.hwui.layer_cache_size=48
-ro.hwui.r_buffer_cache_size=8
-ro.hwui.path_cache_size=32
-ro.hwui.gradient_cache_size=1
-ro.hwui.drop_shadow_cache_size=6
-ro.hwui.texture_cache_flushrate=0.4
-ro.hwui.text_small_cache_width=1024
-ro.hwui.text_small_cache_height=1024
-ro.hwui.text_large_cache_width=2048
-ro.hwui.text_large_cache_height=4096
 
 config.disable_rtt=true
 
@@ -222,16 +259,6 @@ persist.vendor.radio.arfcn_test_mode=3
 
 #for ecc call
 persist.radio.enhance_ecall=true
-
-#ifdef VENDOR_EDIT by zhouhanxin keep O dpm config same with N
-# system props for the DPM module #
-# 0 Disable all DPM feature
-# 1 Enable Fast Dormancy (FD)
-# 2 Enable Connection Tracking (CT)
-# 4 Enable Network Socket Request Manager (NSRM)
-# 8 Enable TCP Connection Manager (TCM)
-persist.vendor.dpm.feature=9
-#endif
 
 #ifdef VENDOR_EDIT
 #lifei@OnLineRD.MultiMediaService, 2016/03/22, Modify for support Dirac Audio source
@@ -301,6 +328,7 @@ persist.qua.op=0
 ro.hardware.lights=oneplus6
 ro.hardware.power=oneplus6
 ro.config.ringtone=omni_ringtone1.ogg
+ro.config.ringtone2=omni_ringtone2.ogg
 ro.config.notification_sound=omni_notification1.ogg
 ro.config.alarm_alert=omni_alarm1.ogg
 ro.services.whitelist.packagelist=com.google.android.gms
